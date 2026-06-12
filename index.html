@@ -6,303 +6,105 @@
     <title>Para o meu Amorzinho ❤️🌻</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Fredoka', sans-serif;
-        }
-
-        /* Tela de Entrada / Embrulho */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Fredoka', sans-serif; }
+        
         #welcome-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-            transition: opacity 0.8s ease;
+            z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 20px; transition: opacity 0.8s ease;
         }
 
-        #welcome-screen h2 {
-            color: #ff4a7d;
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
+        #welcome-screen h2 { color: #ff4a7d; font-size: 2rem; margin-bottom: 20px; }
 
         body {
             background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            overflow-x: hidden;
-            padding: 20px;
-            text-align: center;
+            min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+            overflow-x: hidden; padding: 20px; text-align: center;
         }
 
-        .container {
-            max-width: 450px;
-            width: 100%;
-            z-index: 10;
-            margin-bottom: 50px;
-        }
+        .container { max-width: 450px; width: 100%; z-index: 10; margin-bottom: 50px; }
 
-        h1 {
-            color: #ff4a7d;
-            font-size: 1.8rem;
-            margin: 20px 0 10px;
-            animation: pulse 2s infinite;
-        }
+        h1 { color: #ff4a7d; font-size: 1.8rem; margin: 20px 0 10px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-        }
-
-        .subtitle {
-            color: #7b5e66;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-        }
+        .subtitle { color: #7b5e66; font-size: 1.1rem; margin-bottom: 15px; }
 
         .contador-amor {
-            background: white;
-            border-radius: 25px;
-            padding: 15px 25px;
-            display: inline-block;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(255, 74, 125, 0.15);
-            color: #ff4a7d;
-            font-weight: 600;
-            font-size: 1.1rem;
+            background: white; border-radius: 25px; padding: 15px 25px; display: inline-block; margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(255, 74, 125, 0.15); color: #ff4a7d; font-weight: 600; font-size: 1.1rem;
         }
+        .contador-amor .destaque { font-size: 1.6rem; display: block; font-weight: 700; }
 
-        .contador-amor .destaque {
-            font-size: 1.6rem;
-            display: block;
-            font-weight: 700;
-        }
-
-        .mural-container {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+        .mural-container { position: relative; width: 100%; height: 400px; margin-bottom: 30px; display: flex; justify-content: center; align-items: center; }
 
         .polaroid {
-            background: white;
-            padding: 15px 15px 25px 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-            border-radius: 4px;
-            width: 280px;
-            position: absolute;
-            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            cursor: pointer;
+            background: white; padding: 15px 15px 25px 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            border-radius: 4px; width: 280px; position: absolute; transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); cursor: pointer;
         }
+        .polaroid img { width: 100%; height: 250px; object-fit: cover; border-radius: 2px; }
+        .polaroid .caption { margin-top: 15px; color: #4a4a4a; font-size: 0.95rem; font-weight: 500; }
 
-        .polaroid img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 2px;
-        }
-
-        .polaroid .caption {
-            margin-top: 15px;
-            color: #4a4a4a;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .indicador-fotos {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .bolinha {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ffb3c6;
-            transition: all 0.3s;
-        }
-
-        .bolinha.ativa {
-            background: #ff4a7d;
-            transform: scale(1.5);
-        }
+        .indicador-fotos { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
+        .bolinha { width: 10px; height: 10px; border-radius: 50%; background: #ffb3c6; transition: all 0.3s; }
+        .bolinha.ativa { background: #ff4a7d; transform: scale(1.5); }
 
         .love-letter-box {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 25px;
-            border: 2px dashed #ff85a1;
-            margin-bottom: 30px;
-            display: none;
-            animation: fadeInUp 0.8s ease forwards;
+            background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 25px; border: 2px dashed #ff85a1;
+            margin-bottom: 30px; display: none; animation: fadeInUp 0.8s ease forwards;
         }
-
-        .love-letter-box p {
-            color: #4a4a4a;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            text-align: left;
-            margin-bottom: 15px;
-        }
+        .love-letter-box p { color: #4a4a4a; font-size: 1.1rem; line-height: 1.6; text-align: left; margin-bottom: 15px; }
 
         .btn {
-            background-color: #ff4a7d;
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            font-size: 1.05rem;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 74, 125, 0.3);
-            margin: 10px 0;
-            transition: transform 0.2s;
+            background-color: #ff4a7d; color: white; border: none; padding: 14px 28px; font-size: 1.05rem;
+            font-weight: bold; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 74, 125, 0.3);
+            margin: 10px 0; transition: transform 0.2s;
         }
+        .btn:active { transform: scale(0.95); }
 
-        .btn:active {
-            transform: scale(0.95);
-        }
-
-        .quiz-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            margin-top: 20px;
-            border: 1px solid #ffccd5;
-        }
-
-        .btn-box {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            min-height: 60px;
-        }
-
-        #no-btn {
-            background-color: #94a3b8;
-        }
+        .quiz-card { background: white; border-radius: 20px; padding: 25px; margin-top: 20px; border: 1px solid #ffccd5; }
+        .btn-box { display: flex; justify-content: center; gap: 20px; margin-top: 20px; min-height: 60px; }
+        #no-btn { background-color: #94a3b8; }
 
         .heart {
-            position: fixed;
-            color: #ff758f;
-            font-size: 20px;
-            animation: floatUp 4s linear infinite;
-            opacity: 0;
-            bottom: -20px;
-            z-index: 1;
-            pointer-events: none;
+            position: fixed; color: #ff758f; font-size: 20px; animation: floatUp 4s linear infinite;
+            opacity: 0; bottom: -20px; z-index: 1; pointer-events: none;
         }
 
-        /* Botão de Música Flutuante */
         .music-btn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: white;
-            border: 2px solid #ff4a7d;
-            color: #ff4a7d;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-            transition: all 0.3s ease;
+            position: fixed; bottom: 25px; right: 25px; background: white; border: 2px solid #ff4a7d;
+            color: #ff4a7d; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; transition: all 0.3s ease;
         }
-
-        .music-btn.playing {
-            animation: spin 4s linear infinite;
-            background: #ff4a7d;
-            color: white;
-        }
-
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .music-btn.playing { animation: spin 4s linear infinite; background: #ff4a7d; color: white; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
         .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;
         }
-
         .modal-content {
-            background: white;
-            padding: 35px;
-            border-radius: 25px;
-            max-width: 360px;
-            width: 100%;
-            text-align: center;
-            animation: fadeInUp 0.4s ease;
+            background: white; padding: 35px; border-radius: 25px; max-width: 360px; width: 100%;
+            text-align: center; animation: fadeInUp 0.4s ease;
         }
-
         .confete {
-            position: fixed;
-            width: 12px;
-            height: 12px;
-            border-radius: 3px;
-            z-index: 1011;
-            pointer-events: none;
-            animation: cairConfete linear forwards;
+            position: fixed; width: 12px; height: 12px; border-radius: 3px; z-index: 1011;
+            pointer-events: none; animation: cairConfete linear forwards;
         }
-
-        @keyframes cairConfete {
-            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-        }
+        @keyframes cairConfete { 0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
     </style>
 </head>
 <body>
 
-    <!-- Tela de Entrada Especial -->
     <div id="welcome-screen">
         <h2>Você recebeu uma surpresa... 🎁💛</h2>
         <button class="btn" style="font-size: 1.2rem; padding: 18px 36px;" onclick="entrarNoSite()">Abrir com amor 🌻✨</button>
     </div>
 
-    <!-- Elemento de Áudio Oculto -->
     <audio id="bg-music" src="https://files.catbox.moe/3cadip.mp3" loop></audio>
-
-    <!-- Botão de Controle de Áudio -->
     <button class="music-btn" id="music-toggle" onclick="toggleMúsica(event)">🔇</button>
 
     <div class="container">
@@ -312,40 +114,15 @@
         <div class="contador-amor" id="contador">🌻 Carregando...</div>
 
         <div class="indicador-fotos" id="indicador">
-            <div class="bolinha ativa"></div>
-            <div class="bolinha"></div>
-            <div class="bolinha"></div>
-            <div class="bolinha"></div>
-            <div class="bolinha"></div>
+            <div class="bolinha ativa"></div><div class="bolinha"></div><div class="bolinha"></div><div class="bolinha"></div><div class="bolinha"></div>
         </div>
 
         <div class="mural-container" id="mural">
-            
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/7t8kxy.jpg" alt="Foto 1">
-                <div class="caption">Amo ver esse seu sorriso lindo que ilumina qualquer dia! 😍🌻</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/e180ml.jpg" alt="Foto 2">
-                <div class="caption">Nossa vibe combinando perfeitamente! 😎🧋</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/92vpf5.jpg" alt="Foto 3">
-                <div class="caption">Qualquer dengo é pouco perto do carinho que você merece. 🎁❤️</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/n32xee.jpg" alt="Foto 4">
-                <div class="caption">Cada dia mais apaixonado por você! 💘🌻</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/p9f91o.jpg" alt="Foto 5">
-                <div class="caption">Seu abraço é meu lugar favorito no universo. 🧸✨</div>
-            </div>
-
+            <div class="polaroid" onclick="proximaFoto()"><img src="https://files.catbox.moe/7t8kxy.jpg"><div class="caption">Amo ver esse seu sorriso lindo que ilumina qualquer dia! 😍🌻</div></div>
+            <div class="polaroid" onclick="proximaFoto()"><img src="https://files.catbox.moe/e180ml.jpg"><div class="caption">Nossa vibe combinando perfeitamente! 😎🧋</div></div>
+            <div class="polaroid" onclick="proximaFoto()"><img src="https://files.catbox.moe/92vpf5.jpg"><div class="caption">Qualquer dengo é pouco perto do carinho que você merece. 🎁❤️</div></div>
+            <div class="polaroid" onclick="proximaFoto()"><img src="https://files.catbox.moe/n32xee.jpg"><div class="caption">Cada dia mais apaixonado por você! 💘🌻</div></div>
+            <div class="polaroid" onclick="proximaFoto()"><img src="https://files.catbox.moe/p9f91o.jpg"><div class="caption">Seu abraço é meu lugar favorito no universo. 🧸✨</div></div>
         </div>
 
         <button class="btn" id="open-letter-btn" onclick="abrirCarta()">Clique para ler uma coisinha... 💌🌻</button>
@@ -378,37 +155,26 @@
     <script>
         const musica = document.getElementById('bg-music');
         const btnMusica = document.getElementById('music-toggle');
-        btnMusica.innerText = '🔇';
-
+        
         function entrarNoSite() {
             const tela = document.getElementById('welcome-screen');
             tela.style.opacity = '0';
-            setTimeout(() => {
-                tela.style.display = 'none';
-            }, 800);
+            tela.style.pointerEvents = 'none'; // Impede que o bloqueio fique na frente
+            setTimeout(() => { tela.style.display = 'none'; }, 800);
 
             musica.play().then(() => {
                 btnMusica.classList.add('playing');
                 btnMusica.innerText = '🎵';
-            }).catch(err => console.log("Erro ao tocar áudio."));
+            }).catch(err => console.log("Áudio aguardando interação."));
         }
 
         function toggleMúsica(e) {
             if(e) e.stopPropagation(); 
-            if (musica.paused) {
-                musica.play();
-                btnMusica.classList.add('playing');
-                btnMusica.innerText = '🎵';
-            } else {
-                musica.pause();
-                btnMusica.classList.remove('playing');
-                btnMusica.innerText = '🔇';
-            }
+            if (musica.paused) { musica.play(); btnMusica.classList.add('playing'); btnMusica.innerText = '🎵'; }
+            else { musica.pause(); btnMusica.classList.remove('playing'); btnMusica.innerText = '🔇'; }
         }
 
-        // Contador
         const dataInicio = new Date(2026, 3, 25);
-        
         function atualizarContador() {
             const agora = new Date();
             const diff = agora - dataInicio;
@@ -432,7 +198,7 @@
             let texto = '';
             if (diasTotais === 0) texto = '🌻 Hoje é o nosso dia! 🎉';
             else if (meses === 0) texto = `🌻 ${diasTotais} dias juntos!`;
-            else if (meses === 1 && diasRestantes === 0) texto = '🌻 1 mês juntos! 🎂';
+            else if (meses === 1 && diasRestantes === 0) texto = '🌻 1 mês juntos! 🎂'; // CORRIGIDO AQUI
             else if (meses === 1) texto = `🌻 1 mês e ${diasRestantes} dias juntos!`;
             else if (diasRestantes === 0) texto = `🌻 ${meses} meses juntos! 🎂`;
             else texto = `🌻 ${meses} meses e ${diasRestantes} dias juntos!`;
@@ -442,7 +208,6 @@
         atualizarContador();
         setInterval(atualizarContador, 60000);
 
-        // Mural de fotos
         const fotos = document.querySelectorAll('.polaroid');
         const bolinhas = document.querySelectorAll('.bolinha');
         let fotoAtual = fotos.length - 1;
@@ -451,17 +216,12 @@
             fotos.forEach((foto, index) => {
                 let diff = index - fotoAtual;
                 if (diff < 0) diff += fotos.length;
-                
                 if (index === fotoAtual) {
-                    foto.style.zIndex = '10';
-                    foto.style.transform = `scale(1) rotate(${(index % 2 === 0 ? 3 : -3)}deg)`;
-                    foto.style.opacity = '1';
-                    foto.style.pointerEvents = 'auto';
+                    foto.style.zIndex = '10'; foto.style.transform = `scale(1) rotate(${(index % 2 === 0 ? 3 : -3)}deg)`;
+                    foto.style.opacity = '1'; foto.style.pointerEvents = 'auto';
                 } else {
-                    foto.style.zIndex = '1';
-                    foto.style.transform = `scale(0.85) rotate(${(index % 2 === 0 ? -8 : 8)}deg) translateY(-20px)`;
-                    foto.style.opacity = '0.4';
-                    foto.style.pointerEvents = 'none';
+                    foto.style.zIndex = '1'; foto.style.transform = `scale(0.85) rotate(${(index % 2 === 0 ? -8 : 8)}deg) translateY(-20px)`;
+                    foto.style.opacity = '0.4'; foto.style.pointerEvents = 'none';
                 }
             });
             bolinhas.forEach((b, i) => b.classList.toggle('ativa', i === fotoAtual));
@@ -474,1270 +234,42 @@
         }
         renderizarMural();
 
-        // Carta
         function abrirCarta() {
             document.getElementById('love-letter').style.display = 'block';
             document.getElementById('open-letter-btn').style.display = 'none';
             for(let i = 0; i < 10; i++) setTimeout(criarEfeitoFlutuante, i * 150);
         }
 
-        // Botão fujão
         const noBtn = document.getElementById('no-btn');
         function desviar(e) {
             if (e) e.preventDefault();
             const x = Math.random() * (window.innerWidth - 100) + 50;
             const y = Math.random() * (window.innerHeight - 100) + 50;
-            noBtn.style.position = 'fixed';
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
-            noBtn.style.zIndex = '999';
+            noBtn.style.position = 'fixed'; noBtn.style.left = x + 'px'; noBtn.style.top = y + 'px'; noBtn.style.zIndex = '999';
         }
-        noBtn.addEventListener('mouseover', desviar);
-        noBtn.addEventListener('touchstart', desviar);
-        noBtn.addEventListener('click', desviar);
+        noBtn.addEventListener('mouseover', desviar); noBtn.addEventListener('touchstart', desviar); noBtn.addEventListener('click', desviar);
 
-        // Modal + confetes
         function ganhouQuiz() {
             document.getElementById('sucessoModal').style.display = 'flex';
             for(let i = 0; i < 80; i++) setTimeout(criarConfete, i * 30);
             for(let i = 0; i < 40; i++) setTimeout(criarEfeitoFlutuante, i * 60);
         }
-
-        function fecharModal() {
-            document.getElementById('sucessoModal').style.display = 'none';
-        }
+        function fecharModal() { document.getElementById('sucessoModal').style.display = 'none'; }
 
         function criarConfete() {
             const cores = ['#ff4a7d', '#ff85a1', '#ffc2d1', '#ffd700', '#ffb703', '#ff9ff3'];
-            const c = document.createElement('div');
-            c.classList.add('confete');
-            c.style.left = Math.random() * 100 + 'vw';
-            c.style.top = -(Math.random() * 100 + 20) + 'px';
+            const c = document.createElement('div'); c.classList.add('confete');
+            c.style.left = Math.random() * 100 + 'vw'; c.style.top = -(Math.random() * 100 + 20) + 'px';
             c.style.backgroundColor = cores[Math.floor(Math.random() * cores.length)];
             c.style.animationDuration = (Math.random() * 2 + 2.5) + 's';
-            document.body.appendChild(c);
-            setTimeout(() => c.remove(), 3500);
+            document.body.appendChild(c); setTimeout(() => c.remove(), 3500);
         }
 
         function criarEfeitoFlutuante() {
-            const h = document.createElement('div');
-            h.classList.add('heart');
+            const h = document.createElement('div'); h.classList.add('heart');
             h.innerText = ['🌻', '❤️', '🌻', '💖', '🌻', '✨', '💛', '🌻'][Math.floor(Math.random() * 8)];
-            h.style.left = Math.random() * 100 + 'vw';
-            h.style.animationDuration = Math.random() * 2 + 3 + 's';
-            h.style.fontSize = Math.random() * 18 + 14 + 'px';
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 5000);
-        }
-        setInterval(() => { if (Math.random() > 0.4) criarEfeitoFlutuante(); }, 600);
-    </script>
-</body>
-</html>
-            height: 400px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .polaroid {
-            background: white;
-            padding: 15px 15px 25px 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-            border-radius: 4px;
-            width: 280px;
-            position: absolute;
-            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            cursor: pointer;
-        }
-
-        .polaroid img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 2px;
-        }
-
-        .polaroid .caption {
-            margin-top: 15px;
-            color: #4a4a4a;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .indicador-fotos {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .bolinha {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ffb3c6;
-            transition: all 0.3s;
-        }
-
-        .bolinha.ativa {
-            background: #ff4a7d;
-            transform: scale(1.5);
-        }
-
-        .love-letter-box {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 25px;
-            border: 2px dashed #ff85a1;
-            margin-bottom: 30px;
-            display: none;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .love-letter-box p {
-            color: #4a4a4a;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            text-align: left;
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            background-color: #ff4a7d;
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            font-size: 1.05rem;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 74, 125, 0.3);
-            margin: 10px 0;
-            transition: transform 0.2s;
-        }
-
-        .btn:active {
-            transform: scale(0.95);
-        }
-
-        .quiz-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            margin-top: 20px;
-            border: 1px solid #ffccd5;
-        }
-
-        .btn-box {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            min-height: 60px;
-        }
-
-        #no-btn {
-            background-color: #94a3b8;
-        }
-
-        .heart {
-            position: fixed;
-            color: #ff758f;
-            font-size: 20px;
-            animation: floatUp 4s linear infinite;
-            opacity: 0;
-            bottom: -20px;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        /* Botão de Música Flutuante */
-        .music-btn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: white;
-            border: 2px solid #ff4a7d;
-            color: #ff4a7d;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .music-btn.playing {
-            animation: spin 4s linear infinite;
-            background: #ff4a7d;
-            color: white;
-        }
-
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 35px;
-            border-radius: 25px;
-            max-width: 360px;
-            width: 100%;
-            text-align: center;
-            animation: fadeInUp 0.4s ease;
-        }
-
-        .confete {
-            position: fixed;
-            width: 12px;
-            height: 12px;
-            border-radius: 3px;
-            z-index: 1011;
-            pointer-events: none;
-            animation: cairConfete linear forwards;
-        }
-
-        @keyframes cairConfete {
-            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Tela de Entrada Especial -->
-    <div id="welcome-screen">
-        <h2>Você recebeu uma surpresa... 🎁💛</h2>
-        <button class="btn" style="font-size: 1.2rem; padding: 18px 36px;" onclick="entrarNoSite()">Abrir com amor 🌻✨</button>
-    </div>
-
-    <!-- Elemento de Áudio Oculto -->
-    <audio id="bg-music" src="https://files.catbox.moe/3cadip.mp3" loop></audio>
-
-    <!-- Botão de Controle de Áudio -->
-    <button class="music-btn" id="music-toggle" onclick="toggleMúsica(event)">🔇</button>
-
-    <div class="container">
-        <h1>Para o meu Amorzinho! 🌻💛</h1>
-        <p class="subtitle">Clique nas fotos para ver nossas memórias... ✨🌻</p>
-        
-        <div class="contador-amor" id="contador">🌻 Carregando...</div>
-
-        <div class="indicador-fotos" id="indicador">
-            <div class="bolinha ativa"></div>
-            <div class="bolinha"></div>
-            <div class="bolinha"></div>
-            <div class="bolinha"></div>
-            <div class="bolinha"></div>
-        </div>
-
-        <div class="mural-container" id="mural">
-            
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/7t8kxy.jpg" alt="Foto 1">
-                <div class="caption">Amo ver esse seu sorriso lindo que ilumina qualquer dia! 😍🌻</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/e180ml.jpg" alt="Foto 2">
-                <div class="caption">Nossa vibe combinando perfeitamente! 😎🧋</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/92vpf5.jpg" alt="Foto 3">
-                <div class="caption">Qualquer dengo é pouco perto do carinho que você merece. 🎁❤️</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/n32xee.jpg" alt="Foto 4">
-                <div class="caption">Cada dia mais apaixonado por você! 💘🌻</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/p9f91o.jpg" alt="Foto 5">
-                <div class="caption">Seu abraço é meu lugar favorito no universo. 🧸✨</div>
-            </div>
-
-        </div>
-
-        <button class="btn" id="open-letter-btn" onclick="abrirCarta()">Clique para ler uma coisinha... 💌🌻</button>
-
-        <div class="love-letter-box" id="love-letter">
-            <p><strong>Minha fofinha,</strong></p>
-            <p>Olhando para essas fotos, eu só consigo pensar no quanto tenho sorte de ter você. Você chegou com esse jeito divertido e carinhoso e mudou meu world pra melhor!</p>
-            <p>Amo cada detalhe: sua risada, seu olhar, e como a gente se diverte com as coisas simples.</p>
-            <p><strong>Te amo demais, meu amor!</strong> Você é minha parceira, meu dengo e minha vida. Obrigado por ser quem você é! ❤️🌻</p>
-        </div>
-
-        <div class="quiz-card">
-            <h3 style="color: #ff4a7d;">Uma perguntinha rápida...</h3>
-            <p style="font-size: 1rem; color: #666; margin-top: 5px;">Aceita ganhar um milhão de beijos e cafuné agora?</p>
-            <div class="btn-box">
-                <button class="btn" id="yes-btn" onclick="ganhouQuiz()">Sim! 😍🌻</button>
-                <button class="btn" id="no-btn">Não 😜</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="sucessoModal">
-        <div class="modal-content">
-            <h2 style="color: #ff4a7d;">Resposta certa! 🎉🌻</h2>
-            <p style="margin: 20px 0; font-size: 1.1rem;">Eu já sabia! Dengo garantido pra sempre. Me manda um print no Whats! Te amo, minha gatinha fofa! 💋❤️🌻</p>
-            <button class="btn" onclick="fecharModal()">Te amo! 🥰🌻</button>
-        </div>
-    </div>
-
-    <script>
-        const musica = document.getElementById('bg-music');
-        const btnMusica = document.getElementById('music-toggle');
-        btnMusica.innerText = '🔇';
-
-        function entrarNoSite() {
-            const tela = document.getElementById('welcome-screen');
-            tela.style.opacity = '0';
-            setTimeout(() => {
-                tela.style.display = 'none';
-            }, 800);
-
-            musica.play().then(() => {
-                btnMusica.classList.add('playing');
-                btnMusica.innerText = '🎵';
-            }).catch(err => console.log("Erro ao tocar áudio."));
-        }
-
-        function toggleMúsica(e) {
-            if(e) e.stopPropagation(); 
-            if (musica.paused) {
-                musica.play();
-                btnMusica.classList.add('playing');
-                btnMusica.innerText = '🎵';
-            } else {
-                musica.pause();
-                btnMusica.classList.remove('playing');
-                btnMusica.innerText = '🔇';
-            }
-        }
-
-        // Contador
-        const dataInicio = new Date(2026, 3, 25);
-        
-        function atualizarContador() {
-            const agora = new Date();
-            const diff = agora - dataInicio;
-            if (diff < 0) { document.getElementById('contador').innerHTML = '🌻 Nosso amor está prestes a começar!'; return; }
-            
-            const diasTotais = Math.floor(diff / (1000 * 60 * 60 * 24));
-            let dataTemp = new Date(dataInicio);
-            let meses = 0;
-            
-            while (true) {
-                const proximoMes = new Date(dataTemp);
-                proximoMes.setMonth(proximoMes.getMonth() + 1);
-                if (proximoMes <= agora) { meses++; dataTemp = proximoMes; }
-                else break;
-            }
-            
-            const ultimoMes = new Date(dataInicio);
-            ultimoMes.setMonth(ultimoMes.getMonth() + meses);
-            const diasRestantes = Math.floor((agora - ultimoMes) / (1000 * 60 * 60 * 24));
-            
-            let texto = '';
-            if (diasTotais === 0) texto = '🌻 Hoje é o nosso dia! 🎉';
-            else if (meses === 0) texto = `🌻 ${diasTotais} dias juntos!`;
-            else if (meses === 1 && diasRestantes === 0) texto = '🌻 1 mês juntos! 🎂';
-            else if (meses === 1) texto = `🌻 1 mês e ${diasRestantes} dias juntos!`;
-            else if (diasRestantes === 0) texto = `🌻 ${meses} meses juntos! 🎂`;
-            else texto = `🌻 ${meses} meses e ${diasRestantes} dias juntos!`;
-            
-            document.getElementById('contador').innerHTML = `<span class="destaque">${texto}</span>Desde 25/04/2026 💘`;
-        }
-        atualizarContador();
-        setInterval(atualizarContador, 60000);
-
-        // Mural de fotos
-        const fotos = document.querySelectorAll('.polaroid');
-        const bolinhas = document.querySelectorAll('.bolinha');
-        let fotoAtual = fotos.length - 1;
-
-        function renderizarMural() {
-            fotos.forEach((foto, index) => {
-                let diff = index - fotoAtual;
-                if (diff < 0) diff += fotos.length;
-                
-                if (index === fotoAtual) {
-                    foto.style.zIndex = '10';
-                    foto.style.transform = `scale(1) rotate(${(index % 2 === 0 ? 3 : -3)}deg)`;
-                    foto.style.opacity = '1';
-                    foto.style.pointerEvents = 'auto';
-                } else {
-                    foto.style.zIndex = '1';
-                    foto.style.transform = `scale(0.85) rotate(${(index % 2 === 0 ? -8 : 8)}deg) translateY(-20px)`;
-                    foto.style.opacity = '0.4';
-                    foto.style.pointerEvents = 'none';
-                }
-            });
-            bolinhas.forEach((b, i) => b.classList.toggle('ativa', i === fotoAtual));
-        }
-
-        function proximaFoto() {
-            fotoAtual = (fotoAtual - 1 + fotos.length) % fotos.length;
-            renderizarMural();
-            for(let i = 0; i < 6; i++) setTimeout(criarEfeitoFlutuante, i * 100);
-        }
-        renderizarMural();
-
-        // Carta
-        function abrirCarta() {
-            document.getElementById('love-letter').style.display = 'block';
-            document.getElementById('open-letter-btn').style.display = 'none';
-            for(let i = 0; i < 10; i++) setTimeout(criarEfeitoFlutuante, i * 150);
-        }
-
-        // Botão fujão
-        const noBtn = document.getElementById('no-btn');
-        function desviar(e) {
-            if (e) e.preventDefault();
-            const x = Math.random() * (window.innerWidth - 100) + 50;
-            const y = Math.random() * (window.innerHeight - 100) + 50;
-            noBtn.style.position = 'fixed';
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
-            noBtn.style.zIndex = '999';
-        }
-        noBtn.addEventListener('mouseover', desviar);
-        noBtn.addEventListener('touchstart', desviar);
-        noBtn.addEventListener('click', desviar);
-
-        // Modal + confetes
-        function ganhouQuiz() {
-            document.getElementById('sucessoModal').style.display = 'flex';
-            for(let i = 0; i < 80; i++) setTimeout(criarConfete, i * 30);
-            for(let i = 0; i < 40; i++) setTimeout(criarEfeitoFlutuante, i * 60);
-        }
-
-        function fecharModal() {
-            document.getElementById('sucessoModal').style.display = 'none';
-        }
-
-        function criarConfete() {
-            const cores = ['#ff4a7d', '#ff85a1', '#ffc2d1', '#ffd700', '#ffb703', '#ff9ff3'];
-            const c = document.createElement('div');
-            c.classList.add('confete');
-            c.style.left = Math.random() * 100 + 'vw';
-            c.style.top = -(Math.random() * 100 + 20) + 'px';
-            c.style.backgroundColor = cores[Math.floor(Math.random() * cores.length)];
-            c.style.animationDuration = (Math.random() * 2 + 2.5) + 's';
-            document.body.appendChild(c);
-            setTimeout(() => c.remove(), 3500);
-        }
-
-        function criarEfeitoFlutuante() {
-            const h = document.createElement('div');
-            h.classList.add('heart');
-            h.innerText = ['🌻', '❤️', '🌻', '💖', '🌻', '✨', '💛', '🌻'][Math.floor(Math.random() * 8)];
-            h.style.left = Math.random() * 100 + 'vw';
-            h.style.animationDuration = Math.random() * 2 + 3 + 's';
-            h.style.fontSize = Math.random() * 18 + 14 + 'px';
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 5000);
-        }
-        setInterval(() => { if (Math.random() > 0.4) criarEfeitoFlutuante(); }, 600);
-    </script>
-</body>
-</html>
-            height: 400px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .polaroid {
-            background: white;
-            padding: 15px 15px 25px 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-            border-radius: 4px;
-            width: 280px;
-            position: absolute;
-            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            cursor: pointer;
-        }
-
-        .polaroid img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 2px;
-        }
-
-        .polaroid .caption {
-            margin-top: 15px;
-            color: #4a4a4a;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .indicador-fotos {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .bolinha {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ffb3c6;
-            transition: all 0.3s;
-        }
-
-        .bolinha.ativa {
-            background: #ff4a7d;
-            transform: scale(1.5);
-        }
-
-        .love-letter-box {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 25px;
-            border: 2px dashed #ff85a1;
-            margin-bottom: 30px;
-            display: none;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .love-letter-box p {
-            color: #4a4a4a;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            text-align: left;
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            background-color: #ff4a7d;
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            font-size: 1.05rem;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 74, 125, 0.3);
-            margin: 10px 0;
-            transition: transform 0.2s;
-        }
-
-        .btn:active {
-            transform: scale(0.95);
-        }
-
-        .quiz-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            margin-top: 20px;
-            border: 1px solid #ffccd5;
-        }
-
-        .btn-box {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            min-height: 60px;
-        }
-
-        #no-btn {
-            background-color: #94a3b8;
-        }
-
-        .heart {
-            position: fixed;
-            color: #ff758f;
-            font-size: 20px;
-            animation: floatUp 4s linear infinite;
-            opacity: 0;
-            bottom: -20px;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        /* Botão de Música Flutuante */
-        .music-btn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: white;
-            border: 2px solid #ff4a7d;
-            color: #ff4a7d;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .music-btn.playing {
-            animation: spin 4s linear infinite;
-            background: #ff4a7d;
-            color: white;
-        }
-
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 35px;
-            border-radius: 25px;
-            max-width: 360px;
-            width: 100%;
-            text-align: center;
-            animation: fadeInUp 0.4s ease;
-        }
-
-        .confete {
-            position: fixed;
-            width: 12px;
-            height: 12px;
-            border-radius: 3px;
-            z-index: 1011;
-            pointer-events: none;
-            animation: cairConfete linear forwards;
-        }
-
-        @keyframes cairConfete {
-            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="welcome-screen">
-        <h2>Você recebeu uma surpresa... 🎁💛</h2>
-        <button class="btn" style="font-size: 1.2rem; padding: 18px 36px;" onclick="entrarNoSite()">Abrir com amor 🌻✨</button>
-    </div>
-
-    <audio id="bg-music" src="https://files.catbox.moe/3cadip.mp3" loop></audio>
-
-    <button class="music-btn" id="music-toggle" onclick="toggleMúsica(event)">🔇</button>
-
-    <div class="container">
-        <h1>Para o meu amorzinho! 🌻💛</h1>
-        <p class="subtitle">Clique nas fotos para ver nossas memórias... ✨🌻</p>
-        
-        <div class="contador-amor" id="contador">🌻 Carregando...</div>
-
-        <div class="indicador-fotos" id="indicador">
-            <div class="bolinha ativa"></div>
-            <div class="bolinha"></div>
-            <div class="bolinha"></div>
-            <div class="bolinha"></div>
-            <div class="bolinha"></div>
-        </div>
-
-        <div class="mural-container" id="mural">
-            
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/7t8kxy.jpg" alt="Foto 1">
-                <div class="caption">Amo ver esse seu sorriso lindo que ilumina qualquer dia! 😍🌻</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/e180ml.jpg" alt="Foto 2">
-                <div class="caption">Nossa vibe combinando perfeitamente! 😎🧋</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/92vpf5.jpg" alt="Foto 3">
-                <div class="caption">Qualquer dengo é pouco perto do carinho que você merece. 🎁❤️</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/n32xee.jpg" alt="Foto 4">
-                <div class="caption">Cada dia mais apaixonado por você! 💘🌻</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/p9f91o.jpg" alt="Foto 5">
-                <div class="caption">Seu abraço é meu lugar favorito no universo. 🧸✨</div>
-            </div>
-
-        </div>
-
-        <button class="btn" id="open-letter-btn" onclick="abrirCarta()">Clique para ler uma coisinha... 💌🌻</button>
-
-        <div class="love-letter-box" id="love-letter">
-            <p><strong>Minha fofinha,</strong></p>
-            <p>Olhando para essas fotos, eu só consigo pensar no quanto tenho sorte de ter você. Você chegou com esse jeito divertido e carinhoso e mudou meu world pra melhor!</p>
-            <p>Amo cada detalhe: sua risada, seu olhar, e como a gente se diverte com as coisas simples.</p>
-            <p><strong>Te amo demais, meu amor!</strong> Você é minha parceira, meu dengo e minha vida. Obrigado por ser quem você é! ❤️🌻</p>
-        </div>
-
-        <div class="quiz-card">
-            <h3 style="color: #ff4a7d;">Uma perguntinha rápida...</h3>
-            <p style="font-size: 1rem; color: #666; margin-top: 5px;">Aceita ganhar um milhão de beijos e cafuné agora?</p>
-            <div class="btn-box">
-                <button class="btn" id="yes-btn" onclick="ganhouQuiz()">Sim! 😍🌻</button>
-                <button class="btn" id="no-btn">Não 😜</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="sucessoModal">
-        <div class="modal-content">
-            <h2 style="color: #ff4a7d;">Resposta certa! 🎉🌻</h2>
-            <p style="margin: 20px 0; font-size: 1.1rem;">Eu já sabia! Dengo garantido pra sempre. Me manda um print no Whats! Te amo, minha gatinha fofa! 💋❤️🌻</p>
-            <button class="btn" onclick="fecharModal()">Te amo! 🥰🌻</button>
-        </div>
-    </div>
-
-    <script>
-        const musica = document.getElementById('bg-music');
-        const btnMusica = document.getElementById('music-toggle');
-        btnMusica.innerText = '🔇';
-
-        function entrarNoSite() {
-            const tela = document.getElementById('welcome-screen');
-            tela.style.opacity = '0';
-            setTimeout(() => {
-                tela.style.display = 'none';
-            }, 800);
-
-            musica.play().then(() => {
-                btnMusica.classList.add('playing');
-                btnMusica.innerText = '🎵';
-            }).catch(err => console.log("Erro ao tocar áudio."));
-        }
-
-        function toggleMúsica(e) {
-            if(e) e.stopPropagation(); 
-            if (musica.paused) {
-                musica.play();
-                btnMusica.classList.add('playing');
-                btnMusica.innerText = '🎵';
-            } else {
-                musica.pause();
-                btnMusica.classList.remove('playing');
-                btnMusica.innerText = '🔇';
-            }
-        }
-
-        // Contador
-        const dataInicio = new Date(2026, 3, 25);
-        
-        function atualizarContador() {
-            const agora = new Date();
-            const diff = agora - dataInicio;
-            if (diff < 0) { document.getElementById('contador').innerHTML = '🌻 Nosso amor está prestes a começar!'; return; }
-            
-            const diasTotais = Math.floor(diff / (1000 * 60 * 60 * 24));
-            let dataTemp = new Date(dataInicio);
-            let meses = 0;
-            
-            while (true) {
-                const proximoMes = new Date(dataTemp);
-                proximoMes.setMonth(proximoMes.getMonth() + 1);
-                if (proximoMes <= agora) { meses++; dataTemp = proximoMes; }
-                else break;
-            }
-            
-            const ultimoMes = new Date(dataInicio);
-            ultimoMes.setMonth(ultimoMes.getMonth() + meses);
-            const diasRestantes = Math.floor((agora - ultimoMes) / (1000 * 60 * 60 * 24));
-            
-            let texto = '';
-            if (diasTotais === 0) texto = '🌻 Hoje é o nosso dia! 🎉';
-            else if (meses === 0) texto = `🌻 ${diasTotais} dias juntos!`;
-            else if (meses === 1 && diasRestantes ===
-            height: 400px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .polaroid {
-            background: white;
-            padding: 15px 15px 25px 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-            border-radius: 4px;
-            width: 280px;
-            position: absolute;
-            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            cursor: pointer;
-        }
-
-        .polaroid img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 2px;
-        }
-
-        .polaroid .caption {
-            margin-top: 15px;
-            color: #4a4a4a;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .indicador-fotos {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .bolinha {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ffb3c6;
-            transition: all 0.3s;
-        }
-
-        .bolinha.ativa {
-            background: #ff4a7d;
-            transform: scale(1.5);
-        }
-
-        .love-letter-box {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 25px;
-            border: 2px dashed #ff85a1;
-            margin-bottom: 30px;
-            display: none;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .love-letter-box p {
-            color: #4a4a4a;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            text-align: left;
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            background-color: #ff4a7d;
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            font-size: 1.05rem;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 74, 125, 0.3);
-            margin: 10px 0;
-            transition: transform 0.2s;
-        }
-
-        .btn:active {
-            transform: scale(0.95);
-        }
-
-        .quiz-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            margin-top: 20px;
-            border: 1px solid #ffccd5;
-        }
-
-        .btn-box {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            min-height: 60px;
-        }
-
-        #no-btn {
-            background-color: #94a3b8;
-        }
-
-        .heart {
-            position: fixed;
-            color: #ff758f;
-            font-size: 20px;
-            animation: floatUp 4s linear infinite;
-            opacity: 0;
-            bottom: -20px;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        /* Botão de Música Flutuante */
-        .music-btn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: white;
-            border: 2px solid #ff4a7d;
-            color: #ff4a7d;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .music-btn.playing {
-            animation: spin 4s linear infinite;
-            background: #ff4a7d;
-            color: white;
-        }
-
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 35px;
-            border-radius: 25px;
-            max-width: 360px;
-            width: 100%;
-            text-align: center;
-            animation: fadeInUp 0.4s ease;
-        }
-
-        .confete {
-            position: fixed;
-            width: 12px;
-            height: 12px;
-            border-radius: 3px;
-            z-index: 1011;
-            pointer-events: none;
-            animation: cairConfete linear forwards;
-        }
-
-        @keyframes cairConfete {
-            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="welcome-screen">
-        <h2>Você recebeu uma surpresa... 🎁💛</h2>
-        <button class="btn" style="font-size: 1.2rem; padding: 18px 36px;" onclick="entrarNoSite()">Abrir com amor 🌻✨</button>
-    </div>
-
-    <audio id="bg-music" src="https://files.catbox.moe/3cadip.mp3" loop></audio>
-
-    <button class="music-btn" id="music-toggle" onclick="toggleMúsica(event)">定位</button>
-
-    <div class="container">
-        <h1>Para o amor da minha vida! 🌻💛</h1>
-        <p class="subtitle">Clique nas fotos para ver nossas memórias... ✨🌻</p>
-        
-        <div class="contador-amor" id="contador">🌻 Carregando...</div>
-
-        <div class="indicador-fotos" id="indicador">
-            <div class="bolinha ativa"></div>
-            <div class="bolinha"></div>
-            <div class="bolinha"></div>
-            <div class="bolinha"></div>
-            <div class="bolinha"></div>
-        </div>
-
-        <div class="mural-container" id="mural">
-            
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/7t8kxy.jpg" alt="Foto 1">
-                <div class="caption">Amo ver esse seu sorriso lindo que ilumina qualquer dia! 😍🌻</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/e180ml.jpg" alt="Foto 2">
-                <div class="caption">Nossa vibe combinando perfeitamente! 😎🧋</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/92vpf5.jpg" alt="Foto 3">
-                <div class="caption">Qualquer dengo é pouco perto do carinho que você merece. 🎁❤️</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/n32xee.jpg" alt="Foto 4">
-                <div class="caption">Cada dia mais apaixonado por você! 💘🌻</div>
-            </div>
-
-            <div class="polaroid" onclick="proximaFoto()">
-                <img src="https://files.catbox.moe/p9f91o.jpg" alt="Foto 5">
-                <div class="caption">Seu abraço é meu lugar favorito no universo. 🧸✨</div>
-            </div>
-
-        </div>
-
-        <button class="btn" id="open-letter-btn" onclick="abrirCarta()">Clique para ler uma coisinha... 💌🌻</button>
-
-        <div class="love-letter-box" id="love-letter">
-            <p><strong>Minha fofinha,</strong></p>
-            <p>Olhando para essas fotos, eu só consigo pensar no quanto tenho sorte de ter você. Você chegou com esse jeito divertido e carinhoso e mudou meu world pra melhor!</p>
-            <p>Amo cada detalhe: sua risada, seu olhar, e como a gente se diverte com as coisas simples.</p>
-            <p><strong>Te amo demais, meu amor!</strong> Você é minha parceira, meu dengo e minha vida. Obrigado por ser quem você é! ❤️🌻</p>
-        </div>
-
-        <div class="quiz-card">
-            <h3 style="color: #ff4a7d;">Uma perguntinha rápida...</h3>
-            <p style="font-size: 1rem; color: #666; margin-top: 5px;">Aceita ganhar um milhão de beijos e cafuné agora?</p>
-            <div class="btn-box">
-                <button class="btn" id="yes-btn" onclick="ganhouQuiz()">Sim! 😍🌻</button>
-                <button class="btn" id="no-btn">Não 😜</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="sucessoModal">
-        <div class="modal-content">
-            <h2 style="color: #ff4a7d;">Resposta certa! 🎉🌻</h2>
-            <p style="margin: 20px 0; font-size: 1.1rem;">Eu já sabia! Dengo garantido pra sempre. Me manda um print no Whats! Te amo, minha gatinha fofa! 💋❤️🌻</p>
-            <button class="btn" onclick="fecharModal()">Te amo! 🥰🌻</button>
-        </div>
-    </div>
-
-    <script>
-        const musica = document.getElementById('bg-music');
-        const btnMusica = document.getElementById('music-toggle');
-        btnMusica.innerText = '🔇';
-
-        // Função mágica do Botão Inicial
-        function entrarNoSite() {
-            const tela = document.getElementById('welcome-screen');
-            tela.style.opacity = '0';
-            setTimeout(() => {
-                tela.style.display = 'none';
-            }, 800);
-
-            // Toca a música imediatamente após o clique legítimo
-            musica.play().then(() => {
-                btnMusica.classList.add('playing');
-                btnMusica.innerText = '🎵';
-            }).catch(err => console.log("Erro ao tocar áudio."));
-        }
-
-        function toggleMúsica(e) {
-            if(e) e.stopPropagation(); 
-            if (musica.paused) {
-                musica.play();
-                btnMusica.classList.add('playing');
-                btnMusica.innerText = '🎵';
-            } else {
-                musica.pause();
-                btnMusica.classList.remove('playing');
-                btnMusica.innerText = '🔇';
-            }
-        }
-
-        // Contador
-        const dataInicio = new Date(2026, 3, 25);
-        
-        function atualizarContador() {
-            const agora = new Date();
-            const diff = agora - dataInicio;
-            if (diff < 0) { document.getElementById('contador').innerHTML = '🌻 Nosso amor está prestes a começar!'; return; }
-            
-            const diasTotais = Math.floor(diff / (1000 * 60 * 60 * 24));
-            let dataTemp = new Date(dataInicio);
-            let meses = 0;
-            
-            while (true) {
-                const proximoMes = new Date(dataTemp);
-                proximoMes.setMonth(proximoMes.getMonth() + 1);
-                if (proximoMes <= agora) { meses++; dataTemp = proximoMes; }
-                else break;
-            }
-            
-            const ultimoMes = new Date(dataInicio);
-            ultimoMes.setMonth(ultimoMes.getMonth() + meses);
-            const diasRestantes = Math.floor((agora - ultimoMes) / (1000 * 60 * 60 * 24));
-            
-            let texto = '';
-            if (diasTotais === 0) texto = '🌻 Hoje é o nosso dia! 🎉';
-            else if (meses === 0) texto = `🌻 ${diasTotais} dias juntos!`;
-            else if (meses === 1 && diasRestantes === 0) texto = '🌻 1 mês juntos! 🎂';
-            else if (meses === 1) texto = `🌻 1 mês e ${diasRestantes} dias juntos!`;
-            else if (diasRestantes === 0) texto = `🌻 ${meses} meses juntos! 🎂`;
-            else texto = `🌻 ${meses} meses e ${diasRestantes} dias juntos!`;
-            
-            document.getElementById('contador').innerHTML = `<span class="destaque">${texto}</span>Desde 25/04/2026 💘`;
-        }
-        atualizarContador();
-        setInterval(atualizarContador, 60000);
-
-        // Mural de fotos
-        const fotos = document.querySelectorAll('.polaroid');
-        const bolinhas = document.querySelectorAll('.bolinha');
-        let fotoAtual = fotos.length - 1;
-
-        function renderizarMural() {
-            fotos.forEach((foto, index) => {
-                let diff = index - fotoAtual;
-                if (diff < 0) diff += fotos.length;
-                
-                if (index === fotoAtual) {
-                    foto.style.zIndex = '10';
-                    foto.style.transform = `scale(1) rotate(${(index % 2 === 0 ? 3 : -3)}deg)`;
-                    foto.style.opacity = '1';
-                    foto.style.pointerEvents = 'auto';
-                } else {
-                    foto.style.zIndex = '1';
-                    foto.style.transform = `scale(0.85) rotate(${(index % 2 === 0 ? -8 : 8)}deg) translateY(-20px)`;
-                    foto.style.opacity = '0.4';
-                    foto.style.pointerEvents = 'none';
-                }
-            });
-            bolinhas.forEach((b, i) => b.classList.toggle('ativa', i === fotoAtual));
-        }
-
-        function proximaFoto() {
-            fotoAtual = (fotoAtual - 1 + fotos.length) % fotos.length;
-            renderizarMural();
-            for(let i = 0; i < 6; i++) setTimeout(criarEfeitoFlutuante, i * 100);
-        }
-        renderizarMural();
-
-        // Carta
-        function abrirCarta() {
-            document.getElementById('love-letter').style.display = 'block';
-            document.getElementById('open-letter-btn').style.display = 'none';
-            for(let i = 0; i < 10; i++) setTimeout(criarEfeitoFlutuante, i * 150);
-        }
-
-        // Botão fujão
-        const noBtn = document.getElementById('no-btn');
-        function desviar(e) {
-            if (e) e.preventDefault();
-            const x = Math.random() * (window.innerWidth - 100) + 50;
-            const y = Math.random() * (window.innerHeight - 100) + 50;
-            noBtn.style.position = 'fixed';
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
-            noBtn.style.zIndex = '999';
-        }
-        noBtn.addEventListener('mouseover', desviar);
-        noBtn.addEventListener('touchstart', desviar);
-        noBtn.addEventListener('click', desviar);
-
-        // Modal + confetes
-        function ganhouQuiz() {
-            document.getElementById('sucessoModal').style.display = 'flex';
-            for(let i = 0; i < 80; i++) setTimeout(criarConfete, i * 30);
-            for(let i = 0; i < 40; i++) setTimeout(criarEfeitoFlutuante, i * 60);
-        }
-
-        function fecharModal() {
-            document.getElementById('sucessoModal').style.display = 'none';
-        }
-
-        function criarConfete() {
-            const cores = ['#ff4a7d', '#ff85a1', '#ffc2d1', '#ffd700', '#ffb703', '#ff9ff3'];
-            const c = document.createElement('div');
-            c.classList.add('confete');
-            c.style.left = Math.random() * 100 + 'vw';
-            c.style.top = -(Math.random() * 100 + 20) + 'px';
-            c.style.backgroundColor = cores[Math.floor(Math.random() * cores.length)];
-            c.style.animationDuration = (Math.random() * 2 + 2.5) + 's';
-            document.body.appendChild(c);
-            setTimeout(() => c.remove(), 3500);
-        }
-
-        function criarEfeitoFlutuante() {
-            const h = document.createElement('div');
-            h.classList.add('heart');
-            h.innerText = ['🌻', '❤️', '🌻', '💖', '🌻', '✨', '💛', '🌻'][Math.floor(Math.random() * 8)];
-            h.style.left = Math.random() * 100 + 'vw';
-            h.style.animationDuration = Math.random() * 2 + 3 + 's';
-            h.style.fontSize = Math.random() * 18 + 14 + 'px';
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 5000);
+            h.style.left = Math.random() * 100 + 'vw'; h.style.animationDuration = Math.random() * 2 + 3 + 's';
+            h.style.fontSize = Math.random() * 18 + 14 + 'px'; document.body.appendChild(h); setTimeout(() => h.remove(), 5000);
         }
         setInterval(() => { if (Math.random() > 0.4) criarEfeitoFlutuante(); }, 600);
     </script>
