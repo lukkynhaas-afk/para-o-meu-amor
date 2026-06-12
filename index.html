@@ -13,6 +13,30 @@
             font-family: 'Fredoka', sans-serif;
         }
 
+        /* Tela de Entrada / Embrulho */
+        #welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            transition: opacity 0.8s ease;
+        }
+
+        #welcome-screen h2 {
+            color: #ff4a7d;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
         body {
             background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
             min-height: 100vh;
@@ -152,6 +176,11 @@
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(255, 74, 125, 0.3);
             margin: 10px 0;
+            transition: transform 0.2s;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
         }
 
         .quiz-card {
@@ -183,6 +212,37 @@
             bottom: -20px;
             z-index: 1;
             pointer-events: none;
+        }
+
+        /* Botão de Música Flutuante */
+        .music-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: white;
+            border: 2px solid #ff4a7d;
+            color: #ff4a7d;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .music-btn.playing {
+            animation: spin 4s linear infinite;
+            background: #ff4a7d;
+            color: white;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
         }
 
         @keyframes floatUp {
@@ -233,6 +293,15 @@
 </head>
 <body>
 
+    <div id="welcome-screen">
+        <h2>Você recebeu uma surpresa... 🎁💛</h2>
+        <button class="btn" style="font-size: 1.2rem; padding: 18px 36px;" onclick="entrarNoSite()">Abrir com amor 🌻✨</button>
+    </div>
+
+    <audio id="bg-music" src="https://files.catbox.moe/3cadip.mp3" loop></audio>
+
+    <button class="music-btn" id="music-toggle" onclick="toggleMúsica(event)">定位</button>
+
     <div class="container">
         <h1>Para o amor da minha vida! 🌻💛</h1>
         <p class="subtitle">Clique nas fotos para ver nossas memórias... ✨🌻</p>
@@ -280,7 +349,7 @@
 
         <div class="love-letter-box" id="love-letter">
             <p><strong>Minha fofinha,</strong></p>
-            <p>Olhando para essas fotos, eu só consigo pensar no quanto tenho sorte de ter você. Você chegou com esse jeito divertido e carinhoso e mudou meu mundo pra melhor!</p>
+            <p>Olhando para essas fotos, eu só consigo pensar no quanto tenho sorte de ter você. Você chegou com esse jeito divertido e carinhoso e mudou meu world pra melhor!</p>
             <p>Amo cada detalhe: sua risada, seu olhar, e como a gente se diverte com as coisas simples.</p>
             <p><strong>Te amo demais, meu amor!</strong> Você é minha parceira, meu dengo e minha vida. Obrigado por ser quem você é! ❤️🌻</p>
         </div>
@@ -304,6 +373,38 @@
     </div>
 
     <script>
+        const musica = document.getElementById('bg-music');
+        const btnMusica = document.getElementById('music-toggle');
+        btnMusica.innerText = '🔇';
+
+        // Função mágica do Botão Inicial
+        function entrarNoSite() {
+            const tela = document.getElementById('welcome-screen');
+            tela.style.opacity = '0';
+            setTimeout(() => {
+                tela.style.display = 'none';
+            }, 800);
+
+            // Toca a música imediatamente após o clique legítimo
+            musica.play().then(() => {
+                btnMusica.classList.add('playing');
+                btnMusica.innerText = '🎵';
+            }).catch(err => console.log("Erro ao tocar áudio."));
+        }
+
+        function toggleMúsica(e) {
+            if(e) e.stopPropagation(); 
+            if (musica.paused) {
+                musica.play();
+                btnMusica.classList.add('playing');
+                btnMusica.innerText = '🎵';
+            } else {
+                musica.pause();
+                btnMusica.classList.remove('playing');
+                btnMusica.innerText = '🔇';
+            }
+        }
+
         // Contador
         const dataInicio = new Date(2026, 3, 25);
         
